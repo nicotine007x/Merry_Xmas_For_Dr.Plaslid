@@ -350,6 +350,8 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; bord
 .letter .ps { font: 400 12.5px/1.5 var(--f-body); color: var(--ink-soft); border-top: 1px dashed var(--paper-shade); padding-top: 10px; margin-top: 4px; }
 .replay { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; color: var(--ink); border: 1px solid var(--paper-shade); border-radius: 999px; padding: 8px 12px; }
 .env-wrap.open + .tap-hint { visibility: hidden; }
+.letter-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.letter-nav .replay { margin-top: 0; }
 
 /* desktop side note */
 .note { width: 250px; flex: none; display: grid; gap: 14px; color: var(--scrub); font-size: 13.5px; line-height: 1.6; }
@@ -521,7 +523,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; bord
           <p class="xmas">Merry Christmas &amp; Happy New Year!</p>
           <p class="sign">— น้องรหัสที่ กต. ที่สุดในโลก<br><small>(ตามที่พี่เขียนไว้เองนะ)</small></p>
           <p class="ps">ป.ล. ของขวัญจริงอยู่ในมือพี่แล้ว แกะได้เลยครับ</p>
-          <button class="replay" id="replay" type="button">↺ ดูอีกครั้ง</button>
+          <div class="letter-nav"><button class="replay" id="back" type="button">‹ ย้อนกลับ</button><button class="replay" id="replay" type="button">↺ ดูใหม่ตั้งแต่ต้น</button></div>
         </article>
       </div>
       <p class="tap-hint">แตะซองเพื่อเปิดจดหมาย</p>
@@ -717,10 +719,10 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; bord
   let down = null, holdT = null, held = false;
   function resume() { paused = false; held = false; story.classList.remove('paused'); }
   story.addEventListener('pointerdown', e => {
-    if (e.button > 0 || e.target.closest('button') || e.target.closest('.letter')) return;
+    if (e.button > 0 || e.target.closest('button')) return;
     down = { x: e.clientX, y: e.clientY, id: e.pointerId };
     held = false; clearTimeout(holdT);
-    holdT = setTimeout(() => { held = true; paused = true; story.classList.add('paused'); }, 400);
+    if (durs[i]) holdT = setTimeout(() => { held = true; paused = true; story.classList.add('paused'); }, 400);
   });
   story.addEventListener('pointermove', e => {
     if (down && e.pointerId === down.id && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 14) clearTimeout(holdT);
@@ -743,6 +745,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; bord
   gift.addEventListener('click', openGift);
   document.getElementById('env').addEventListener('click', openEnv);
   document.getElementById('replay').addEventListener('click', () => activate(0));
+  document.getElementById('back').addEventListener('click', prev);
 
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
