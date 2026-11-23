@@ -9,7 +9,8 @@
 <meta property="og:description" content="พัสดุด่วนถึงคุณหมอเอื้อ แตะเพื่อแกะกล่อง 🎁">
 <meta name="theme-color" content="#0b1a16">
 <style>
-:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+:root { --sat: env(safe-area-inset-top, 0px); --sab: env(safe-area-inset-bottom, 0px); }
+html, body { overscroll-behavior: none; }
 body { font-size: 14px; -webkit-text-size-adjust: 100%; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
@@ -79,6 +80,11 @@ body {
 }
 
 .stage { height: 100%; display: flex; align-items: center; justify-content: center; gap: 48px; }
+@media (max-width: 600px) {
+  body { padding: 0; }
+  .stage { position: fixed; inset: 0; height: auto; }
+  .story { width: 100%; height: 100%; max-height: none; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
+}
 
 /* ---------- story shell ---------- */
 .story {
@@ -93,7 +99,7 @@ body {
   overflow: hidden;
   background: var(--pine);
   box-shadow: 0 30px 80px var(--shadow);
-  touch-action: manipulation;
+  touch-action: none;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -101,11 +107,11 @@ body {
 }
 .story:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
 
-.bars { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; gap: 4px; z-index: 5; transition: opacity .25s; }
+.bars { position: absolute; top: calc(10px + var(--sat)); left: 10px; right: 10px; display: flex; gap: 4px; z-index: 5; transition: opacity .25s; }
 .bar { flex: 1; height: 3px; border-radius: 2px; background: var(--veil); overflow: hidden; }
 .bar i { display: block; height: 100%; width: 0; background: var(--snow); }
 
-.who { position: absolute; top: 22px; left: 12px; right: 12px; display: flex; align-items: center; gap: 10px; z-index: 5; transition: opacity .25s; }
+.who { position: absolute; top: calc(22px + var(--sat)); left: 12px; right: 12px; display: flex; align-items: center; gap: 10px; z-index: 5; transition: opacity .25s; }
 .avatar { width: 34px; height: 34px; border-radius: 50%; padding: 2px; background: conic-gradient(var(--gold), var(--berry), var(--scrub), var(--gold)); flex: none; }
 .avatar img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--pine); background: var(--pine); }
 .who-text { display: grid; line-height: 1.25; min-width: 0; }
@@ -113,7 +119,7 @@ body {
 .who-text small { font-size: 11.5px; opacity: .75; }
 .chip { font: 500 10px/1 var(--f-mono); letter-spacing: .1em; padding: 5px 8px; border: 1px solid var(--veil); border-radius: 999px; white-space: nowrap; }
 .story.paused .bars, .story.paused .who { opacity: 0; }
-.sound { margin-left: auto; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; }
+.sound { margin-left: auto; margin-right: -6px; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; }
 .sound svg { width: 20px; height: 20px; fill: none; stroke: var(--paper); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .sound .speaker { fill: var(--paper); }
 .sound .off { display: none; }
@@ -122,13 +128,13 @@ body {
 
 /* Christmas scenery behind non-X-ray slides */
 .slide > :not(.scene):not(.garland):not(.inuse) { position: relative; z-index: 1; }
-.inuse { position: absolute; top: 80px; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 6px; background: var(--inuse-bg); border: 1.5px solid var(--inuse); color: var(--inuse); font: 600 10.5px/1 var(--f-mono); letter-spacing: .16em; white-space: nowrap; box-shadow: 0 0 18px var(--inuse-glow); pointer-events: none; }
+.inuse { position: absolute; top: calc(80px + var(--sat)); left: 50%; transform: translateX(-50%); z-index: 1; display: flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 6px; background: var(--inuse-bg); border: 1.5px solid var(--inuse); color: var(--inuse); font: 600 10.5px/1 var(--f-mono); letter-spacing: .16em; white-space: nowrap; box-shadow: 0 0 18px var(--inuse-glow); pointer-events: none; }
 .inuse .lamp { width: 7px; height: 7px; border-radius: 50%; background: var(--inuse); box-shadow: 0 0 8px var(--inuse); }
 .slide.active .inuse .lamp { animation: beat 1.4s ease-in-out infinite; }
 .inuse .hat { position: absolute; left: -15px; top: -17px; width: 32px; height: auto; transform: rotate(-24deg); }
 .scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; aspect-ratio: 400 / 220; z-index: 0; pointer-events: none; }
 .scene.dim { opacity: .45; }
-.garland { position: absolute; left: 0; right: 0; top: 60px; width: 100%; height: auto; aspect-ratio: 400 / 60; z-index: 0; pointer-events: none; overflow: visible; }
+.garland { position: absolute; left: 0; right: 0; top: calc(60px + var(--sat)); width: 100%; height: auto; aspect-ratio: 400 / 60; z-index: 0; pointer-events: none; overflow: visible; }
 .garland .bulb { animation: twinkle 1.8s ease-in-out infinite; }
 @keyframes twinkle { 50% { opacity: .4; } }
 
@@ -137,11 +143,11 @@ body {
 /* ---------- slides ---------- */
 .slide {
   position: absolute; inset: 0; z-index: 1;
-  padding: 84px 22px 30px;
+  padding: calc(84px + var(--sat)) 22px calc(30px + var(--sab));
   display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px;
   text-align: center;
   opacity: 0; visibility: hidden;
-  transition: opacity .35s, visibility .35s;
+  transition: opacity .2s, visibility .2s;
 }
 .slide.active { opacity: 1; visibility: visible; }
 
@@ -326,7 +332,7 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; bord
 
 .letter {
   position: absolute; left: 0; right: 0; top: 50%;
-  max-height: 100%; overflow-y: auto;
+  max-height: 100%; overflow-y: auto; touch-action: pan-y; overscroll-behavior: contain;
   transform: translateY(-46%) scale(.96); opacity: 0; visibility: hidden;
   transition: transform .6s .75s, opacity .6s .75s, visibility .6s .75s;
   background: var(--paper); color: var(--ink);
@@ -370,7 +376,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; bord
       <button class="sound" id="sound" type="button" aria-label="ปิดเพลง">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path class="speaker" d="M4 9h4l5-4v14l-5-4H4z"/><g class="on"><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></g><g class="off"><path d="M17 9.5l5 5M22 9.5l-5 5"/></g></svg>
       </button>
-      <span class="chip">DRAFT</span>
     </header>
 
     <!-- 1. gift -->
@@ -613,10 +618,11 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; bord
   let soundOn = true, musicStarted = false;
   bgm.volume = .6;
   function startMusic() {
-    if (!soundOn) return;
-    musicStarted = true;
-    const p = bgm.play(); if (p) p.catch(() => {});
+    if (!soundOn || (musicStarted && !bgm.paused)) return;
+    const p = bgm.play();
+    if (p) p.then(() => { musicStarted = true; }).catch(() => {}); else musicStarted = true;
   }
+  startMusic();
   soundBtn.addEventListener('click', () => {
     soundOn = !soundOn;
     soundBtn.classList.toggle('muted', !soundOn);
@@ -707,27 +713,31 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; bord
   }
   requestAnimationFrame(tick);
 
-  /* tap = navigate, hold = pause */
-  let downX = null, holdT = null, held = false;
+  /* tap left third = back, elsewhere = next; swipe left/right; hold = pause */
+  let down = null, holdT = null, held = false;
   function resume() { paused = false; held = false; story.classList.remove('paused'); }
   story.addEventListener('pointerdown', e => {
-    if (e.target.closest('button') || e.target.closest('.letter')) return;
-    downX = e.clientX; held = false;
-    holdT = setTimeout(() => { held = true; paused = true; story.classList.add('paused'); }, 220);
+    if (e.button > 0 || e.target.closest('button') || e.target.closest('.letter')) return;
+    down = { x: e.clientX, y: e.clientY, id: e.pointerId };
+    held = false; clearTimeout(holdT);
+    holdT = setTimeout(() => { held = true; paused = true; story.classList.add('paused'); }, 400);
+  });
+  story.addEventListener('pointermove', e => {
+    if (down && e.pointerId === down.id && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 14) clearTimeout(holdT);
   });
   story.addEventListener('pointerup', e => {
-    if (downX === null) return;
+    if (!down || e.pointerId !== down.id) return;
     clearTimeout(holdT);
-    if (held) resume();
-    else {
-      const r = story.getBoundingClientRect();
-      (e.clientX - r.left < r.width * 0.3) ? prev() : next();
-    }
-    downX = null;
+    const dx = e.clientX - down.x, dy = e.clientY - down.y;
+    down = null;
+    if (held) { resume(); return; }
+    startMusic();
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { dx < 0 ? next() : prev(); return; }
+    const r = story.getBoundingClientRect();
+    (e.clientX - r.left < r.width / 3) ? prev() : next();
   });
-  ['pointercancel', 'pointerleave'].forEach(ev => story.addEventListener(ev, () => {
-    clearTimeout(holdT); if (held) resume(); downX = null;
-  }));
+  story.addEventListener('pointercancel', () => { clearTimeout(holdT); if (held) resume(); down = null; });
+  story.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { clearTimeout(holdT); if (held) resume(); down = null; } });
   story.addEventListener('contextmenu', e => e.preventDefault());
 
   gift.addEventListener('click', openGift);
