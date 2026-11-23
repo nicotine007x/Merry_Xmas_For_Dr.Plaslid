@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Christmas X-ray for Dr. Plaslid</title>
+<meta name="description" content="พัสดุด่วนถึงคุณหมอเอื้อ แตะเพื่อแกะกล่อง">
+<meta property="og:title" content="Christmas X-ray for Dr. Plaslid">
+<meta property="og:description" content="พัสดุด่วนถึงคุณหมอเอื้อ แตะเพื่อแกะกล่อง 🎁">
+<meta name="theme-color" content="#0b1a16">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { font-size: 14px; -webkit-text-size-adjust: 100%; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one phone-sized IG-style story, tap right/left to move, hold to pause. Single deliberate look (night pine), works on any host theme. */
+:root {
+  --night: #0b1a16;
+  --pine: #143a2e;
+  --pine-hi: #1f5141;
+  --pine-lo: #0e2a21;
+  --scrub: #7cc9b8;
+  --scrub-deep: #2c7a6b;
+  --scrub-line: rgba(124, 201, 184, .28);
+  --scrub-grid: rgba(124, 201, 184, .08);
+  --monitor: #071411;
+  --monitor-hi: #0f2a24;
+  --berry: #d03a4c;
+  --berry-deep: #9e2437;
+  --berry-tint: #fdecee;
+  --gold: #f3c552;
+  --paper: #fbfdfc;
+  --paper-shade: #dfe9e6;
+  --paper-fold: #eef4f2;
+  --ink: #17302a;
+  --ink-soft: #5d736d;
+  --snow: #ffffff;
+  --veil: rgba(255, 255, 255, .3);
+  --glass: rgba(255, 255, 255, .06);
+  --lightbox: #1d3d47;
+  --lightbox-lo: #0a1418;
+  --film: #05090b;
+  --xray: #79d3ff;
+  --shadow: rgba(0, 0, 0, .45);
+  --tile-line: rgba(124, 201, 184, .07);
+  --viewer: #e6f4fa;
+  --viewer-lo: #c7e2ec;
+  --viewer-edge: #22323a;
+  --viewer-glow: rgba(121, 211, 255, .38);
+  --clip: #9fb0b6;
+  --inuse: #ff5566;
+  --inuse-bg: #2b0c12;
+  --inuse-glow: rgba(255, 85, 102, .45);
+
+  --f-cute: "Mali", "IBM Plex Sans Thai", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans Thai", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "IBM Plex Sans Thai", monospace;
+  --f-rx: Georgia, "Times New Roman", serif;
+  color-scheme: dark;
+}
+
+html { height: 100%; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--night);
+  color: var(--paper);
+  font-family: var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 12px;
+}
+
+.stage { height: 100%; display: flex; align-items: center; justify-content: center; gap: 48px; }
+
+/* ---------- story shell ---------- */
+.story {
+  position: relative;
+  flex: 0 1 auto;
+  min-width: 0;
+  height: 100%;
+  max-height: 880px;
+  aspect-ratio: 9 / 17.5;
+  max-width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--pine);
+  box-shadow: 0 30px 80px var(--shadow);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  cursor: pointer;
+}
+.story:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+
+.bars { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; gap: 4px; z-index: 5; transition: opacity .25s; }
+.bar { flex: 1; height: 3px; border-radius: 2px; background: var(--veil); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--snow); }
+
+.who { position: absolute; top: 22px; left: 12px; right: 12px; display: flex; align-items: center; gap: 10px; z-index: 5; transition: opacity .25s; }
+.avatar { width: 34px; height: 34px; border-radius: 50%; padding: 2px; background: conic-gradient(var(--gold), var(--berry), var(--scrub), var(--gold)); flex: none; }
+.avatar img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--pine); background: var(--pine); }
+.who-text { display: grid; line-height: 1.25; min-width: 0; }
+.who-text b { font-size: 14px; font-weight: 600; }
+.who-text small { font-size: 11.5px; opacity: .75; }
+.chip { font: 500 10px/1 var(--f-mono); letter-spacing: .1em; padding: 5px 8px; border: 1px solid var(--veil); border-radius: 999px; white-space: nowrap; }
+.story.paused .bars, .story.paused .who { opacity: 0; }
+.sound { margin-left: auto; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; }
+.sound svg { width: 20px; height: 20px; fill: none; stroke: var(--paper); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sound .speaker { fill: var(--paper); }
+.sound .off { display: none; }
+.sound.muted .on { display: none; }
+.sound.muted .off { display: inline; }
+
+/* Christmas scenery behind non-X-ray slides */
+.slide > :not(.scene):not(.garland):not(.inuse) { position: relative; z-index: 1; }
+.inuse { position: absolute; top: 80px; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 6px; background: var(--inuse-bg); border: 1.5px solid var(--inuse); color: var(--inuse); font: 600 10.5px/1 var(--f-mono); letter-spacing: .16em; white-space: nowrap; box-shadow: 0 0 18px var(--inuse-glow); pointer-events: none; }
+.inuse .lamp { width: 7px; height: 7px; border-radius: 50%; background: var(--inuse); box-shadow: 0 0 8px var(--inuse); }
+.slide.active .inuse .lamp { animation: beat 1.4s ease-in-out infinite; }
+.inuse .hat { position: absolute; left: -15px; top: -17px; width: 32px; height: auto; transform: rotate(-24deg); }
+.scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; aspect-ratio: 400 / 220; z-index: 0; pointer-events: none; }
+.scene.dim { opacity: .45; }
+.garland { position: absolute; left: 0; right: 0; top: 60px; width: 100%; height: auto; aspect-ratio: 400 / 60; z-index: 0; pointer-events: none; overflow: visible; }
+.garland .bulb { animation: twinkle 1.8s ease-in-out infinite; }
+@keyframes twinkle { 50% { opacity: .4; } }
+
+#snow { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+
+/* ---------- slides ---------- */
+.slide {
+  position: absolute; inset: 0; z-index: 1;
+  padding: 84px 22px 30px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px;
+  text-align: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity .35s, visibility .35s;
+}
+.slide.active { opacity: 1; visibility: visible; }
+
+.slide.active .in { animation: rise .6s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--d, 0) * 1ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.eyebrow { margin: 0; font: 500 11px/1.2 var(--f-mono); letter-spacing: .16em; color: var(--scrub); }
+.headline { margin: 0; font: 700 25px/1.3 var(--f-cute); text-wrap: balance; }
+
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 8px; }
+
+.tap-hint { margin: 0; font: 400 15px/1.3 var(--f-cute); opacity: .85; }
+.slide.active .tap-hint { animation: breathe 1.8s ease-in-out infinite; }
+@keyframes breathe { 50% { opacity: .45; } }
+
+/* 1. gift */
+.s-gift { background: radial-gradient(120% 70% at 50% 62%, var(--pine-hi), var(--pine) 58%, var(--pine-lo)); }
+.label {
+  width: min(250px, 100%);
+  display: grid; gap: 5px; text-align: left;
+  background: var(--paper); color: var(--ink);
+  border-radius: 6px; padding: 12px 14px;
+  font: 500 11.5px/1.35 var(--f-mono);
+  transform: rotate(-3deg);
+  box-shadow: 0 10px 24px var(--shadow);
+}
+.label .urgent { justify-self: start; background: var(--berry); color: var(--paper); padding: 3px 7px; letter-spacing: .14em; border-radius: 3px; }
+.label .k { display: inline-block; width: 46px; color: var(--ink-soft); }
+
+.gift { position: relative; width: 170px; height: 170px; }
+.slide.active .gift:not(.open) { animation: wiggle 2.6s ease-in-out infinite; }
+@keyframes wiggle { 0%, 66%, 100% { transform: rotate(0); } 72% { transform: rotate(-6deg); } 78% { transform: rotate(6deg); } 84% { transform: rotate(-4deg); } 90% { transform: rotate(2deg); } }
+.gift .box {
+  position: absolute; left: 16px; right: 16px; bottom: 0; height: 110px; border-radius: 6px;
+  background: linear-gradient(90deg, transparent 42%, var(--gold) 42% 58%, transparent 58%), var(--berry-deep);
+  transition: transform .5s;
+}
+.gift .lid {
+  position: absolute; left: 6px; right: 6px; top: 32px; height: 36px; border-radius: 6px;
+  background: linear-gradient(90deg, transparent 42%, var(--gold) 42% 58%, transparent 58%), var(--berry);
+  transition: transform .75s cubic-bezier(.2, .8, .2, 1), opacity .75s;
+}
+.gift .lid::before, .gift .lid::after {
+  content: ""; position: absolute; top: -27px; left: 50%; width: 42px; height: 30px;
+  border: 8px solid var(--gold); border-radius: 50%;
+}
+.gift .lid::before { transform: translateX(-96%) rotate(-18deg); }
+.gift .lid::after { transform: translateX(-4%) rotate(18deg); }
+.gift .glow { position: absolute; inset: -40px; border-radius: 50%; background: radial-gradient(circle, var(--gold), transparent 62%); opacity: 0; transform: scale(.4); transition: opacity .6s, transform .8s; pointer-events: none; }
+.gift.open .lid { transform: translate(40px, -150px) rotate(32deg); opacity: 0; }
+.gift.open .box { transform: scale(1.06); }
+.gift.open .glow { opacity: .55; transform: scale(1.15); }
+
+.confetti { position: absolute; left: 50%; top: 60%; width: 8px; height: 12px; border-radius: 2px; z-index: 4; pointer-events: none; animation: burst 1.15s cubic-bezier(.15, .7, .3, 1) forwards; }
+.confetti.c1 { background: var(--gold); } .confetti.c2 { background: var(--berry); } .confetti.c3 { background: var(--scrub); } .confetti.c4 { background: var(--paper); }
+@keyframes burst { to { transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; } }
+
+/* 2. scan */
+.s-scan { background: radial-gradient(110% 60% at 50% 38%, var(--monitor-hi), var(--monitor)); }
+.monitor {
+  width: 100%; border: 1px solid var(--scrub-line); border-radius: 12px; padding: 12px 14px 10px;
+  background-color: var(--monitor);
+  background-image: linear-gradient(var(--scrub-grid) 1px, transparent 1px), linear-gradient(90deg, var(--scrub-grid) 1px, transparent 1px);
+  background-size: 16px 16px;
+  display: grid; gap: 6px;
+}
+.monitor-top { display: flex; justify-content: space-between; font: 500 11px/1 var(--f-mono); color: var(--scrub); letter-spacing: .08em; }
+.beat { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--berry); margin-right: 6px; vertical-align: 1px; }
+.slide.active .beat { animation: beat .7s ease-in-out infinite; }
+@keyframes beat { 50% { transform: scale(1.6); opacity: .5; } }
+.ecg { width: 100%; height: auto; display: block; overflow: visible; }
+.ecg path { fill: none; stroke: var(--scrub); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 640; stroke-dashoffset: 640; filter: drop-shadow(0 0 4px var(--scrub)); }
+.slide.active .ecg path { animation: draw 2.2s linear infinite; }
+@keyframes draw { 70% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+
+.readings { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; gap: 8px; }
+.readings li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; background: var(--glass); font-size: 14px; text-align: left; }
+.readings b { font-weight: 600; font-size: 12.5px; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.readings .ok { color: var(--monitor); background: var(--scrub); }
+.readings .warn { color: var(--ink); background: var(--gold); }
+.readings .crit { color: var(--paper); background: var(--berry); }
+
+/* 3. diagnosis */
+.s-dx { background: var(--scrub-deep); }
+.paper {
+  position: relative; width: 100%;
+  background: var(--paper); color: var(--ink);
+  border-radius: 8px; padding: 16px 18px 18px;
+  display: grid; gap: 14px; text-align: left;
+  transform: rotate(-1deg);
+  box-shadow: 0 14px 30px var(--shadow);
+}
+.paper-head { display: flex; justify-content: space-between; gap: 10px; padding-bottom: 10px; border-bottom: 1.5px dashed var(--ink-soft); font: 600 10.5px/1 var(--f-mono); letter-spacing: .12em; color: var(--ink-soft); }
+.paper dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 7px 12px; align-items: baseline; }
+.paper dt { font: 500 9.5px/1.3 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.paper dd { margin: 0; font-size: 14px; line-height: 1.45; min-width: 0; }
+.dx { border: 1.5px solid var(--berry); border-radius: 8px; padding: 11px 12px 12px; background: var(--berry-tint); display: grid; gap: 4px; }
+.dx .tag { font: 600 9.5px/1 var(--f-mono); letter-spacing: .14em; color: var(--berry-deep); }
+.dx h2 { margin: 2px 0 0; font: 700 21px/1.2 var(--f-cute); color: var(--berry-deep); text-wrap: balance; }
+.dx p { margin: 0; font-size: 13.5px; line-height: 1.45; }
+.dx .code { font: 500 10.5px/1 var(--f-mono); color: var(--ink-soft); margin-top: 3px; }
+.plan { margin: 0; font-size: 13.5px; line-height: 1.5; }
+.plan span { font: 600 9.5px/1 var(--f-mono); letter-spacing: .14em; color: var(--ink-soft); margin-right: 6px; }
+.stamp { position: absolute; right: 12px; top: 44px; border: 3px solid var(--berry); color: var(--berry); font: 600 15px/1 var(--f-mono); letter-spacing: .16em; padding: 5px 9px; border-radius: 4px; transform: rotate(-14deg); opacity: .85; }
+.slide.active .stamp { animation: stamp .32s cubic-bezier(.3, 1.4, .5, 1) 2.4s both; }
+@keyframes stamp { from { transform: rotate(-14deg) scale(2.4); opacity: 0; } to { transform: rotate(-14deg) scale(1); opacity: .85; } }
+
+/* 4-9. past history, X-ray lightbox */
+.s-mem {
+  gap: 12px;
+  background:
+    radial-gradient(80% 50% at 50% 45%, transparent, var(--lightbox-lo) 92%),
+    repeating-linear-gradient(0deg, var(--tile-line) 0 1px, transparent 1px 46px),
+    repeating-linear-gradient(90deg, var(--tile-line) 0 1px, transparent 1px 46px),
+    radial-gradient(80% 50% at 50% 45%, var(--lightbox), var(--lightbox-lo));
+}
+.visit { margin: 0; font: 700 21px/1.25 var(--f-cute); text-wrap: balance; }
+.mem { position: relative; width: 100%; height: min(50%, 450px); flex: none; display: flex; align-items: center; justify-content: center; }
+.frame { position: relative; height: calc(100% - 34px); aspect-ratio: var(--ar); max-width: calc(100% - 44px); }
+.frame::before { content: ""; position: absolute; inset: -16px; z-index: 0; border-radius: 10px; border: 4px solid var(--viewer-edge); background: linear-gradient(180deg, var(--viewer), var(--viewer-lo)); box-shadow: 0 0 46px var(--viewer-glow), 0 14px 30px var(--shadow); }
+.frame::after { content: ""; position: absolute; z-index: 3; top: -19px; left: 50%; width: 38px; height: 15px; margin-left: -19px; border-radius: 3px; background: var(--clip); box-shadow: 0 2px 4px var(--shadow); }
+.frame.has-attach { transform: translateX(var(--shift, -30px)); }
+.film { position: absolute; inset: 0; z-index: 1; border: 8px solid var(--film); border-radius: 6px; overflow: hidden; background: var(--film); box-shadow: 0 0 60px var(--scrub-line); }
+.film img, .film video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.film::after { content: ""; position: absolute; inset: 0; background: var(--xray); mix-blend-mode: color; opacity: 0; pointer-events: none; }
+.slide.active .film img, .slide.active .film video { animation: develop 1.7s ease-out 1s both; }
+.slide.active .film::after { animation: tint 1.7s ease-out 1s both; }
+@keyframes develop { from { filter: grayscale(1) invert(1) contrast(1.35) brightness(.95); } to { filter: none; } }
+@keyframes tint { from { opacity: .75; } to { opacity: 0; } }
+.marker { position: absolute; top: 6px; left: 8px; z-index: 2; font: 600 17px/1 var(--f-mono); color: var(--snow); opacity: .85; }
+.dev { position: absolute; left: 8px; bottom: 7px; z-index: 2; font: 500 10px/1 var(--f-mono); letter-spacing: .1em; color: var(--snow); opacity: 0; }
+.slide.active .dev { animation: devlabel 2.8s ease both; }
+@keyframes devlabel { 0%, 75% { opacity: .9; } 100% { opacity: 0; } }
+.attach { position: absolute; z-index: 2; right: -76px; bottom: 6px; width: 120px; background: var(--paper); padding: 5px 5px 15px; border-radius: 3px; transform: rotate(7deg); box-shadow: 0 10px 22px var(--shadow); }
+.attach img, .attach video { display: block; width: 100%; height: auto; aspect-ratio: var(--aar, auto); object-fit: cover; }
+.attach .live { position: absolute; left: 9px; top: 9px; font: 600 8.5px/1 var(--f-mono); letter-spacing: .1em; color: var(--paper); background: var(--berry); padding: 3px 5px; border-radius: 3px; }
+.slide.active .attach { animation: stick .5s cubic-bezier(.3, 1.5, .5, 1) 2.5s both; }
+@keyframes stick { from { opacity: 0; transform: rotate(20deg) scale(.6); } to { opacity: 1; transform: rotate(7deg); } }
+.attach.left { right: auto; left: -70px; top: -4px; bottom: auto; transform: rotate(-7deg); }
+.slide.active .attach.left { animation-name: stickL; }
+@keyframes stickL { from { opacity: 0; transform: rotate(-20deg) scale(.6); } to { opacity: 1; transform: rotate(-7deg); } }
+.cap { margin: 0; max-width: 100%; font: 600 15px/1.45 var(--f-cute); text-wrap: balance; }
+.dxl { margin: 0; font: 500 11.5px/1.4 var(--f-mono); color: var(--scrub); }
+
+/* 7. prescription */
+.s-rx { background: radial-gradient(120% 70% at 50% 30%, var(--pine-hi), var(--pine-lo)); }
+.pad { width: 100%; background: var(--paper); color: var(--ink); border-radius: 10px; padding: 14px 16px 16px; text-align: left; display: grid; gap: 12px; box-shadow: 0 14px 30px var(--shadow); }
+.pad-head { display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1.5px solid var(--paper-shade); }
+.rx { font: 400 42px/1 var(--f-rx); color: var(--berry); }
+.pad-head div { display: grid; gap: 3px; min-width: 0; }
+.pad-head b { font: 700 20px/1.1 var(--f-cute); }
+.pad-head small { font: 500 10px/1.3 var(--f-mono); color: var(--ink-soft); letter-spacing: .04em; }
+.meds { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.meds li { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding-bottom: 10px; border-bottom: 1px dashed var(--paper-shade); }
+.meds li b { font-size: 15px; font-weight: 600; }
+.meds li span { grid-column: 1; font-size: 13px; line-height: 1.45; color: var(--ink-soft); }
+.meds li em { grid-column: 2; grid-row: 1 / span 2; align-self: center; font: 600 11px/1 var(--f-mono); font-style: normal; color: var(--scrub-deep); }
+.coupon { display: flex; align-items: center; gap: 12px; border: 2px dashed var(--berry); border-radius: 10px; padding: 10px 12px; background: var(--berry-tint); }
+.slide.active .coupon { animation: pop .5s cubic-bezier(.3, 1.5, .5, 1) 3.4s both; }
+@keyframes pop { from { transform: scale(.6) rotate(-4deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.coupon svg { width: 40px; height: 52px; flex: none; }
+.coupon div { display: grid; gap: 2px; min-width: 0; }
+.coupon small { font: 600 9.5px/1.2 var(--f-mono); letter-spacing: .12em; color: var(--berry-deep); }
+.coupon b { font: 700 16px/1.25 var(--f-cute); }
+.coupon span { font-size: 12px; color: var(--ink-soft); }
+
+/* 8. letter */
+.s-letter { background: radial-gradient(100% 70% at 50% 38%, var(--berry), var(--berry-deep)); }
+.env-wrap { position: relative; width: 100%; flex: 1; min-height: 0; display: grid; place-items: center; }
+.envelope { position: relative; width: min(260px, 100%); aspect-ratio: 26 / 17; perspective: 600px; transition: transform .6s .45s, opacity .5s .45s; }
+.env-body { position: absolute; inset: 0; border-radius: 6px; background: var(--paper); box-shadow: 0 16px 34px var(--shadow); overflow: hidden; }
+.env-body::before { content: ""; position: absolute; inset: 0; background: var(--paper-fold); clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%); }
+.env-body::after { content: ""; position: absolute; inset: 0; background: var(--paper-shade); clip-path: polygon(0 100%, 50% 52%, 100% 100%); }
+.flap { position: absolute; left: 0; right: 0; top: 0; height: 60%; background: var(--paper-shade); clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top; transition: transform .55s; z-index: 2; }
+.seal { position: absolute; z-index: 3; left: 50%; top: 60%; width: 42px; height: 42px; margin: -21px 0 0 -21px; border-radius: 50%; background: var(--berry); color: var(--paper); display: grid; place-items: center; font: 700 17px/1 var(--f-cute); box-shadow: 0 2px 6px var(--shadow); transition: opacity .2s; }
+.env-wrap.open .flap { transform: rotateX(180deg); }
+.env-wrap.open .seal { opacity: 0; }
+.env-wrap.open .envelope { transform: translateY(70%) scale(.9); opacity: 0; pointer-events: none; }
+.slide.active .env-wrap:not(.open) .envelope { animation: float 3s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-8px); } }
+
+.letter {
+  position: absolute; left: 0; right: 0; top: 50%;
+  max-height: 100%; overflow-y: auto;
+  transform: translateY(-46%) scale(.96); opacity: 0; visibility: hidden;
+  transition: transform .6s .75s, opacity .6s .75s, visibility .6s .75s;
+  background: var(--paper); color: var(--ink);
+  border-radius: 8px; padding: 26px 20px 18px; text-align: left;
+  font: 400 15px/1.68 var(--f-cute);
+  box-shadow: 0 18px 40px var(--shadow);
+}
+.letter::before { content: ""; position: absolute; top: -9px; left: 50%; width: 84px; height: 22px; margin-left: -42px; background: var(--gold); opacity: .8; transform: rotate(-3deg); }
+.env-wrap.open .letter { transform: translateY(-50%); opacity: 1; visibility: visible; }
+.letter p { margin: 0 0 8px; }
+.letter .to { font-weight: 700; font-size: 17px; }
+.letter .xmas { font-weight: 700; color: var(--berry-deep); }
+.letter .sign { text-align: right; font-weight: 600; line-height: 1.5; }
+.letter .sign small { font-weight: 400; font-size: 12.5px; color: var(--ink-soft); }
+.letter .ps { font: 400 12.5px/1.5 var(--f-body); color: var(--ink-soft); border-top: 1px dashed var(--paper-shade); padding-top: 10px; margin-top: 4px; }
+.replay { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; color: var(--ink); border: 1px solid var(--paper-shade); border-radius: 999px; padding: 8px 12px; }
+.env-wrap.open + .tap-hint { visibility: hidden; }
+
+/* desktop side note */
+.note { width: 250px; flex: none; display: grid; gap: 14px; color: var(--scrub); font-size: 13.5px; line-height: 1.6; }
+.note h1 { margin: 0; font: 700 24px/1.2 var(--f-cute); color: var(--paper); }
+.note p { margin: 0; }
+.note ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.note li { display: flex; gap: 10px; align-items: baseline; }
+.note kbd { font: 500 10.5px/1 var(--f-mono); color: var(--paper); border: 1px solid var(--scrub-line); border-radius: 4px; padding: 4px 6px; white-space: nowrap; min-width: 64px; text-align: center; }
+@media (max-width: 760px) { .note { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="story" id="story" tabindex="0" aria-label="ของขวัญคริสต์มาสถึงพี่เอื้อแบบสตอรี่ แตะขวาเพื่อไปต่อ แตะซ้ายเพื่อย้อนกลับ">
+    <div class="bars" id="bars"></div>
+
+    <header class="who">
+      <div class="avatar"><img src="img/avatar2.jpg" alt="เบียร์"></div>
+      <div class="who-text"><b>เบียร์</b><small>ส่งถึงคุณหมอเอื้อ · 25 ธ.ค.</small></div>
+      <button class="sound" id="sound" type="button" aria-label="ปิดเพลง">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="speaker" d="M4 9h4l5-4v14l-5-4H4z"/><g class="on"><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></g><g class="off"><path d="M17 9.5l5 5M22 9.5l-5 5"/></g></svg>
+      </button>
+      <span class="chip">DRAFT</span>
+    </header>
+
+    <!-- 1. gift -->
+    <section class="slide s-gift active" data-dur="tap" data-scene="full" data-garland="party">
+      <h1 class="headline in">มีพัสดุด่วนถึงคุณหมอ!</h1>
+      <div class="label in" style="--d:150">
+        <span class="urgent">URGENT · ด่วนที่สุด</span>
+        <div><span class="k">TO</span>คุณหมอเอื้อ</div>
+        <div><span class="k">FROM</span>น้องเบียร์</div>
+        <div><span class="k">NOTE</span>ห้ามเปิดระหว่างเรียนหรือเข้าเวร</div>
+      </div>
+      <button class="gift" id="gift" type="button" aria-label="แกะกล่องของขวัญ">
+        <span class="glow"></span><span class="box"></span><span class="lid"></span>
+      </button>
+      <p class="tap-hint">แตะกล่องเพื่อแกะ · tap to open</p>
+    </section>
+
+    <!-- 2. scan -->
+    <section class="slide s-scan" data-dur="8500" data-scene="dim">
+      <p class="eyebrow in">CHRISTMAS CHECK-UP 2026</p>
+      <h2 class="headline in" style="--d:100">กำลังตรวจร่างกายคุณหมอ...</h2>
+      <div class="monitor in" style="--d:250">
+        <div class="monitor-top"><span><i class="beat"></i>HR 92 bpm</span><span>SpO₂ 99%</span></div>
+        <svg class="ecg" viewBox="0 0 300 70" aria-hidden="true"><path d="M0 40 H52 L60 40 L66 30 L72 40 L80 40 L86 52 L94 6 L102 60 L108 40 H150 L158 40 L164 30 L170 40 L178 40 L184 52 L192 6 L200 60 L206 40 H300"/></svg>
+      </div>
+      <ul class="readings">
+        <li class="in" style="--d:1100"><span>ชีพจร</span><b class="ok">ปกติดี</b></li>
+        <li class="in" style="--d:1900"><span>ชั่วโมงนอน</span><b class="warn">ต่ำกว่าเกณฑ์มาก</b></li>
+        <li class="in" style="--d:2700"><span>ระดับคาเฟอีน</span><b class="warn">ทะลุชาร์ต</b></li>
+        <li class="in" style="--d:3500"><span>วิตามินคริสต์มาส</span><b class="crit">ตรวจไม่พบ</b></li>
+      </ul>
+    </section>
+
+    <!-- 3. diagnosis -->
+    <section class="slide s-dx" data-dur="9500" data-scene="full">
+      <article class="paper in">
+        <div class="paper-head"><span>MEDICAL RECORD</span><span>HN 25-12-26</span></div>
+        <dl>
+          <dt>Patient</dt><dd>คุณหมอเอื้อ</dd>
+          <dt>C.C.</dt><dd>เหนื่อย ง่วง อยากกลับบ้าน เป็นมาทั้งปี</dd>
+        </dl>
+        <div class="dx in" style="--d:900">
+          <span class="tag">DIAGNOSIS</span>
+          <h2>Severe Christmas Deficiency</h2>
+          <p>ภาวะขาดวิตามินคริสต์มาสขั้นรุนแรง ร่วมกับทำงานหนักเกินพิกัด</p>
+          <span class="code">ICD-10: XMS.25</span>
+        </div>
+        <p class="plan in" style="--d:1700"><span>PLAN</span>ทบทวนประวัติการรักษาย้อนหลัง 6 ครั้ง แล้วรับยาด่วน →</p>
+        <div class="stamp">URGENT</div>
+      </article>
+    </section>
+
+    <!-- 4-9. past history (real photos) -->
+    <section class="slide s-mem" data-dur="9500" data-scene="dim" data-room="1">
+      <p class="eyebrow">PAST HISTORY · VISIT 1/6</p>
+      <h2 class="visit">วันปัจฉิม</h2>
+      <div class="mem"><div class="frame has-attach" style="--ar:812/900; --shift:34px; height:auto; width:68%">
+        <div class="film"><span class="marker">R</span><img src="img/v1n.jpg" alt="โพสต์อิทจากพี่เอื้อตอน ม.3"><span class="dev">กำลังล้างฟิล์ม...</span></div>
+        <div class="attach left" style="--aar:4/5"><img src="img/v1.jpg" alt="พี่เอื้อกับเบียร์วันปัจฉิม"></div>
+      </div></div>
+      <p class="cap in" style="--d:2200">โพสต์อิทตอน ม.3 ผมยังเก็บไว้อยู่เลย<br>ได้รับยศ <span style="white-space:nowrap">“น้องรหัสที่กวนตีนที่สุดในโลก”</span><br>ผมควรจะดีใจไหมเนี่ย แฮ่ๆ</p>
+    </section>
+    <section class="slide s-mem" data-dur="9500" data-scene="dim" data-room="1">
+      <p class="eyebrow">PAST HISTORY · VISIT 2/6</p>
+      <h2 class="visit">นอนดูการ์ตูนฉ่ำ</h2>
+      <div class="mem"><div class="frame" style="--ar:443/900">
+        <div class="film"><span class="marker">L</span><img src="img/v2.jpg" alt="วิดีโอคอลกับพี่เอื้อ"><span class="dev">กำลังล้างฟิล์ม...</span></div>
+      </div></div>
+      <p class="cap in" style="--d:2200">ผู้ป่วย: กำลังรักษาตัว<br>ผู้ป่วยร่วม: คุณสมบูรณ์<br>กำลังตามหาวันพีซอย่างเมามัน</p>
+    </section>
+    <section class="slide s-mem" data-dur="9500" data-scene="dim" data-room="1">
+      <p class="eyebrow">PAST HISTORY · VISIT 3/6</p>
+      <h2 class="visit">ไม่ได้แพ้ แค่เป็นที่สองเฉยๆ</h2>
+      <div class="mem"><div class="frame" style="--ar:675/900">
+        <div class="film"><span class="marker">R</span><img src="img/v3.jpg" alt="พี่เอื้อชี้คะแนนเกม Nintendo"><span class="dev">กำลังล้างฟิล์ม...</span></div>
+      </div></div>
+      <p class="cap in" style="--d:2200">มีคนซ้ำเติมที่สองด้วยแหละ แง่ๆ<br>ไว้คราวหน้ามาแก้มือแล้วกัน</p>
+    </section>
+    <section class="slide s-mem" data-dur="11000" data-scene="dim" data-room="1">
+      <p class="eyebrow">PAST HISTORY · VISIT 4/6</p>
+      <h2 class="visit">Photobooth</h2>
+      <div class="mem"><div class="frame has-attach" style="--ar:347/520; --shift:-45px">
+        <div class="film"><span class="marker">L</span><img src="img/v4b.jpg" alt="รูป photobooth พี่เอื้อกับเบียร์"><span class="dev">กำลังล้างฟิล์ม...</span></div>
+        <div class="attach" style="--aar:640/428; width:164px; right:-100px"><video src="img/v4.mp4" muted loop playsinline preload="auto"></video><span class="live">LIVE</span></div>
+      </div></div>
+      <p class="cap in" style="--d:2200">พาคุณหมอไปถ่าย photobooth กัน</p>
+    </section>
+    <section class="slide s-mem" data-dur="9500" data-scene="dim" data-room="1">
+      <p class="eyebrow">PAST HISTORY · VISIT 5/6</p>
+      <h2 class="visit">Dinner Time</h2>
+      <div class="mem"><div class="frame has-attach" style="--ar:506/900">
+        <div class="film"><span class="marker">R</span><img src="img/v5.jpg" alt="ช่อดอกไม้ที่โต๊ะอาหาร"><span class="dev">กำลังล้างฟิล์ม...</span></div>
+        <div class="attach" style="--aar:4/5"><img src="img/v5b.jpg" alt="อาหารมื้อเย็น"></div>
+      </div></div>
+      <p class="cap in" style="--d:2200">แล้วก็ไปกินข้าวกัน<br>(ดอกไม้ใหญ่กว่าตัวผมอีก)</p>
+    </section>
+    <section class="slide s-mem" data-dur="9500" data-scene="dim" data-room="1">
+      <p class="eyebrow">PAST HISTORY · VISIT 6/6</p>
+      <h2 class="visit">Basketball Time</h2>
+      <div class="mem"><div class="frame has-attach" style="--ar:506/900">
+        <div class="film"><span class="marker">L</span><img src="img/v6.jpg" alt="พี่เอื้อเล่นบาสตอนเย็น"><span class="dev">กำลังล้างฟิล์ม...</span></div>
+        <div class="attach" style="--aar:520/345"><img src="img/v6b.jpg" alt="เซลฟี่พี่เอื้อกับเพื่อน"></div>
+      </div></div>
+      <p class="cap in" style="--d:2200">นอกจากคุณหมอจะเรียนเก่งแล้ว<br>ยังเล่นบาสเก่งอีกต่างหาก<br>ไว้ชวนกันไปเล่นบาสอีกนะ</p>
+    </section>
+
+    <!-- 7. prescription -->
+    <section class="slide s-rx" data-dur="12500" data-scene="full">
+      <article class="pad in">
+        <div class="pad-head">
+          <span class="rx">℞</span>
+          <div><b>ใบสั่งยา</b><small>Dr. น้องเบียร์ · ไม่มีใบประกอบวิชาชีพ</small></div>
+        </div>
+        <ol class="meds">
+          <li class="in" style="--d:600"><b>Sleepamol 500 mg</b><span>นอนให้ครบ 7 ชม. ทานก่อนนอนทุกคืน</span><em>#30</em></li>
+          <li class="in" style="--d:1400"><b>Happinex Forte</b><span>ยิ้มบ่อยๆ ไม่จำกัดโดส</span><em>PRN</em></li>
+          <li class="in" style="--d:2200"><b>Somboon® 1 ตัว</b><span>กอดสมบูรณ์แน่นๆ ก่อนนอน ใช้ร่วมกับยาข้อ 1</span><em>HS</em></li>
+        </ol>
+        <div class="coupon">
+          <svg viewBox="0 0 40 52" aria-hidden="true">
+            <rect x="21" y="0" width="4" height="18" rx="2" fill="var(--berry)" transform="rotate(14 23 9)"/>
+            <path d="M5 12 H35 L31 50 H9 Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M7 24 H33 L31 50 H9 Z" fill="var(--gold)" opacity=".55"/>
+            <circle cx="14" cy="44" r="2.6" fill="var(--ink)"/><circle cx="20" cy="46" r="2.6" fill="var(--ink)"/><circle cx="26" cy="43" r="2.6" fill="var(--ink)"/><circle cx="18" cy="40" r="2.6" fill="var(--ink)"/>
+          </svg>
+          <div><small>COUPON · NO EXPIRY</small><b>ชานมไข่มุก 1 แก้ว</b><span>ถึงคิวน้องเปย์คืนบ้างแล้ว แลกได้ทุกเมื่อ</span></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- 8. letter -->
+    <section class="slide s-letter" data-dur="tap" data-scene="full" data-garland="warm">
+      <div class="env-wrap" id="envWrap">
+        <button class="envelope" id="env" type="button" aria-label="เปิดจดหมาย">
+          <span class="env-body"></span><span class="flap"></span><span class="seal">B</span>
+        </button>
+        <article class="letter" aria-live="polite">
+          <p class="to">ถึง พี่เอื้อ</p>
+          <p>ตั้งแต่วันปัจฉิมที่พี่เขียนโน้ตให้ จนถึงวันที่ได้กลับมาเจอกันอีก ขอบคุณที่ยังเป็นพี่รหัสที่ดีเสมอนะครับ</p>
+          <p>ดีใจมากๆ ที่ปีนี้มีพี่กลับมาเหมือนเดิม ปีนี้มีความสุขมาก ได้พาพี่ไปเที่ยวหลายๆ ที่ แล้วพอเห็นพี่มีความสุข ผมเองก็มีความสุขมากครับ</p>
+          <p>นิสัยเปย์ที่ได้มาจากพี่ ขอเอามาใช้คืนบ้างนะ 😆</p>
+          <p>ขอให้พี่ได้นอนเยอะๆ ได้พักบ้าง กอดสมบูรณ์แน่นๆ แล้วก็มีความสุขมากๆ นะครับ</p>
+          <p class="xmas">Merry Christmas &amp; Happy New Year!</p>
+          <p class="sign">— น้องรหัสที่ กต. ที่สุดในโลก<br><small>(ตามที่พี่เขียนไว้เองนะ)</small></p>
+          <p class="ps">ป.ล. ของขวัญจริงอยู่ในมือพี่แล้ว แกะได้เลยครับ</p>
+          <button class="replay" id="replay" type="button">↺ ดูอีกครั้ง</button>
+        </article>
+      </div>
+      <p class="tap-hint">แตะซองเพื่อเปิดจดหมาย</p>
+    </section>
+
+    <canvas id="snow" aria-hidden="true"></canvas>
+    <audio id="bgm" src="audio/xmas.mp3" loop preload="auto"></audio>
+  </div>
+
+  <aside class="note">
+    <h1>Christmas Check-up</h1>
+    <p>ร่างที่ 2 ใส่รูปและเรื่องจริงแล้ว แคปชันกับมุกทุกอันยังแก้ได้</p>
+    <ul>
+      <li><kbd>แตะขวา / →</kbd><span>หน้าถัดไป</span></li>
+      <li><kbd>แตะซ้าย / ←</kbd><span>ย้อนกลับ</span></li>
+      <li><kbd>กดค้าง</kbd><span>หยุดชั่วคราว</span></li>
+    </ul>
+    <p>ดูบนมือถือจะได้ฟีลที่สุด เพราะพี่เขาจะเปิดจาก QR</p>
+  </aside>
+</div>
+
+<script>
+(function () {
+  const story = document.getElementById('story');
+  const slides = Array.from(story.querySelectorAll('.slide'));
+  const N = slides.length;
+  const durs = slides.map(s => s.dataset.dur === 'tap' ? null : Number(s.dataset.dur));
+  const barsEl = document.getElementById('bars');
+  const fills = slides.map(() => {
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    const i = document.createElement('i');
+    bar.appendChild(i);
+    barsEl.appendChild(bar);
+    return i;
+  });
+  const gift = document.getElementById('gift');
+  const envWrap = document.getElementById('envWrap');
+
+  /* scenery: snowy white trees + fairy lights, drawn once */
+  let seed = 11;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  function tree(x, base, h, op, star) {
+    const w = h * .62, tiers = [[1, .58, .22], [.8, .33, .36], [.58, .1, .5]];
+    let d = '';
+    for (const [top, bot, hw] of tiers) {
+      const ty = base - top * h, by = base - bot * h, half = hw * w;
+      d += `M${x} ${ty.toFixed(1)}L${(x + half).toFixed(1)} ${by.toFixed(1)}Q${x} ${(by + .07 * h).toFixed(1)} ${(x - half).toFixed(1)} ${by.toFixed(1)}Z`;
+    }
+    let g = `<g opacity="${op}"><rect x="${(x - .05 * w).toFixed(1)}" y="${(base - .12 * h).toFixed(1)}" width="${(.1 * w).toFixed(1)}" height="${(.12 * h).toFixed(1)}" fill="var(--snow)"/><path d="${d}" fill="var(--snow)"/></g>`;
+    if (star) {
+      const cy = base - h - 6, pts = [];
+      for (let k = 0; k < 10; k++) { const r = k % 2 ? 3.2 : 7.5, a = -Math.PI / 2 + k * Math.PI / 5; pts.push((x + r * Math.cos(a)).toFixed(1) + ',' + (cy + r * Math.sin(a)).toFixed(1)); }
+      g += `<polygon class="bulb" points="${pts.join(' ')}" fill="var(--gold)"/>`;
+    }
+    return g;
+  }
+  function sceneSVG(dim) {
+    seed = 11;
+    let s = `<svg class="scene${dim ? ' dim' : ''}" viewBox="0 0 400 220" aria-hidden="true">`;
+    for (let k = 0; k < 11; k++) s += tree(k * 40 + rnd() * 20 - 10, 204, 60 + rnd() * 34, .1);
+    for (let k = 0; k < 7; k++) s += tree(k * 64 + 12 + rnd() * 20, 212, 82 + rnd() * 40, .2);
+    s += `<path d="M0 198 Q60 188 120 198 T240 198 T400 194 V220 H0Z" fill="var(--snow)" opacity=".16"/>`;
+    s += tree(22, 222, 150, .78, true) + tree(74, 224, 98, .62) + tree(382, 222, 140, .78, true) + tree(330, 226, 92, .62);
+    s += `<path d="M-10 214 Q40 196 100 216 L100 220 H-10Z M300 216 Q360 196 410 212 V220 H300Z" fill="var(--snow)" opacity=".7"/>`;
+    return s + '</svg>';
+  }
+  function garlandSVG(kind, id) {
+    const cols = kind === 'warm' ? ['var(--gold)', 'var(--snow)', 'var(--scrub)', 'var(--snow)'] : ['var(--gold)', 'var(--berry)', 'var(--scrub)', 'var(--snow)'];
+    const q = (t, a, c, b) => (1 - t) * (1 - t) * a + 2 * (1 - t) * t * c + t * t * b;
+    let s = `<svg class="garland" viewBox="0 0 400 60" aria-hidden="true"><defs><filter id="${id}" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>`;
+    s += `<path d="M-10 6 Q95 46 200 12 Q305 46 410 6" fill="none" stroke="var(--snow)" stroke-opacity=".45" stroke-width="1.2"/>`;
+    let n = 0;
+    for (const [x0, x1, y0, y1] of [[-10, 200, 6, 12], [200, 410, 12, 6]]) {
+      const cx = x0 === -10 ? 95 : 305;
+      for (let k = 1; k < 9; k++) {
+        const t = k / 9, x = q(t, x0, cx, x1), y = q(t, y0, 46, y1);
+        s += `<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${x.toFixed(1)}" y2="${(y + 5).toFixed(1)}" stroke="var(--snow)" stroke-opacity=".5"/>`;
+        s += `<circle class="bulb" cx="${x.toFixed(1)}" cy="${(y + 9).toFixed(1)}" r="4" fill="${cols[n % 4]}" filter="url(#${id})" style="animation-delay:${((n * 0.37) % 1.8).toFixed(2)}s"/>`;
+        n++;
+      }
+    }
+    return s + '</svg>';
+  }
+  slides.forEach((sl, k) => {
+    if (sl.dataset.garland) sl.insertAdjacentHTML('afterbegin', garlandSVG(sl.dataset.garland, 'glow' + k));
+    if (sl.dataset.scene) sl.insertAdjacentHTML('afterbegin', sceneSVG(sl.dataset.scene === 'dim'));
+    if (sl.dataset.room) sl.insertAdjacentHTML('afterbegin', '<div class="inuse" aria-hidden="true"><svg class="hat" viewBox="0 0 40 32"><path d="M4 26 Q13 2 33 6 Q26 13 30 25 Z" fill="var(--berry)"/><rect x="1" y="22" width="32" height="8" rx="4" fill="var(--snow)"/><circle cx="33.5" cy="6" r="4.2" fill="var(--snow)"/></svg><span class="lamp"></span>X-RAY · IN USE</div>');
+  });
+
+  /* background music: starts when the gift is opened (browsers need a tap first) */
+  const bgm = document.getElementById('bgm');
+  const soundBtn = document.getElementById('sound');
+  let soundOn = true, musicStarted = false;
+  bgm.volume = .6;
+  function startMusic() {
+    if (!soundOn) return;
+    musicStarted = true;
+    const p = bgm.play(); if (p) p.catch(() => {});
+  }
+  soundBtn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    soundBtn.classList.toggle('muted', !soundOn);
+    soundBtn.setAttribute('aria-label', soundOn ? 'ปิดเพลง' : 'เปิดเพลง');
+    if (soundOn) startMusic(); else bgm.pause();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) bgm.pause();
+    else if (soundOn && musicStarted) { const p = bgm.play(); if (p) p.catch(() => {}); }
+  });
+
+  const videos = Array.from(story.querySelectorAll('video'));
+  function syncVideos() {
+    videos.forEach(v => {
+      if (slides[i].contains(v)) { try { v.currentTime = 0; } catch (e) {} const p = v.play(); if (p) p.catch(() => {}); }
+      else v.pause();
+    });
+  }
+
+  let i = 0, elapsed = 0, paused = false, giftOpened = false, envOpened = false, giftTimer = null;
+
+  function activate(n) {
+    n = Math.max(0, Math.min(N - 1, n));
+    clearTimeout(giftTimer);
+    slides[i].classList.remove('active');
+    i = n;
+    const s = slides[i];
+    void s.offsetWidth;
+    s.classList.add('active');
+    elapsed = 0;
+    fills.forEach((f, k) => { f.style.transition = 'none'; f.style.width = k < i ? '100%' : '0%'; });
+    if (i === 0) { giftOpened = false; gift.classList.remove('open'); }
+    if (i === N - 1) { envOpened = false; envWrap.classList.remove('open'); }
+    syncVideos();
+  }
+
+  function burst() {
+    const r = story.getBoundingClientRect();
+    for (let k = 0; k < 30; k++) {
+      const c = document.createElement('span');
+      c.className = 'confetti c' + (1 + (k % 4));
+      c.style.setProperty('--x', ((Math.random() - .5) * r.width * .9).toFixed(0) + 'px');
+      c.style.setProperty('--y', (-(Math.random() * r.height * .45) - 40).toFixed(0) + 'px');
+      c.style.setProperty('--r', ((Math.random() - .5) * 720).toFixed(0) + 'deg');
+      story.appendChild(c);
+      setTimeout(() => c.remove(), 1300);
+    }
+  }
+
+  function openGift() {
+    if (giftOpened) return;
+    giftOpened = true;
+    startMusic();
+    gift.classList.add('open');
+    burst();
+    fills[0].style.transition = 'width .9s ease';
+    fills[0].style.width = '100%';
+    giftTimer = setTimeout(() => { if (i === 0) activate(1); }, 1100);
+  }
+
+  function openEnv() {
+    if (envOpened) return;
+    envOpened = true;
+    envWrap.classList.add('open');
+    fills[N - 1].style.transition = 'width 1s ease';
+    fills[N - 1].style.width = '100%';
+  }
+
+  function next() {
+    if (i === 0 && !giftOpened) return openGift();
+    if (i === 0) return;
+    if (i === N - 1) return openEnv();
+    activate(i + 1);
+  }
+  function prev() { activate(i - 1); }
+
+  let last = performance.now();
+  function tick(now) {
+    const dt = Math.min(now - last, 100);
+    last = now;
+    const d = durs[i];
+    if (d && !paused && !document.hidden) {
+      elapsed += dt;
+      fills[i].style.width = Math.min(100, elapsed / d * 100) + '%';
+      if (elapsed >= d) activate(i + 1);
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  /* tap = navigate, hold = pause */
+  let downX = null, holdT = null, held = false;
+  function resume() { paused = false; held = false; story.classList.remove('paused'); }
+  story.addEventListener('pointerdown', e => {
+    if (e.target.closest('button') || e.target.closest('.letter')) return;
+    downX = e.clientX; held = false;
+    holdT = setTimeout(() => { held = true; paused = true; story.classList.add('paused'); }, 220);
+  });
+  story.addEventListener('pointerup', e => {
+    if (downX === null) return;
+    clearTimeout(holdT);
+    if (held) resume();
+    else {
+      const r = story.getBoundingClientRect();
+      (e.clientX - r.left < r.width * 0.3) ? prev() : next();
+    }
+    downX = null;
+  });
+  ['pointercancel', 'pointerleave'].forEach(ev => story.addEventListener(ev, () => {
+    clearTimeout(holdT); if (held) resume(); downX = null;
+  }));
+  story.addEventListener('contextmenu', e => e.preventDefault());
+
+  gift.addEventListener('click', openGift);
+  document.getElementById('env').addEventListener('click', openEnv);
+  document.getElementById('replay').addEventListener('click', () => activate(0));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+  });
+
+  /* snow */
+  const cv = document.getElementById('snow');
+  const ctx = cv.getContext('2d');
+  const snowColor = getComputedStyle(document.documentElement).getPropertyValue('--snow').trim() || '#fff';
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W = 0, H = 0, dpr = 1;
+  const flakes = Array.from({ length: 55 }, () => ({ x: Math.random(), y: Math.random(), r: 1 + Math.random() * 2.2, s: .25 + Math.random() * .7, p: Math.random() * 6.28, a: .35 + Math.random() * .5 }));
+  function size() {
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = story.clientWidth; H = story.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (still) draw(0);
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = snowColor;
+    for (const f of flakes) {
+      if (!still) {
+        f.y += f.s / H * 1.1;
+        if (f.y > 1.02) { f.y = -0.02; f.x = Math.random(); }
+      }
+      const x = f.x * W + Math.sin(t / 1400 + f.p) * 10;
+      ctx.globalAlpha = f.a;
+      ctx.beginPath(); ctx.arc(x, f.y * H, f.r, 0, 6.283); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  new ResizeObserver(size).observe(story);
+  size();
+  if (!still) (function loop(t) { draw(t); requestAnimationFrame(loop); })(0);
+})();
+</script>
+
+</body>
+</html>
